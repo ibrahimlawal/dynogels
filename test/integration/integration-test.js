@@ -877,31 +877,31 @@ describe('Dynogels Integration Tests', function () {
       });
     });
 
-    it('should return tweets using secondaryIndex and date object', done => {
+    it('should return tweets using secondaryIndex and date object', (done) => {
       const oneMinAgo = new Date(new Date().getTime() - 60 * 1000);
 
       Tweet.scan()
-      .usingIndex('PublishedDateTimeIndex')
-      .where('PublishedDateTime').gt(oneMinAgo)
-      .exec((err, data) => {
-        expect(err).to.not.exist;
-        expect(data.Items).to.have.length.above(0);
+        .usingIndex('PublishedDateTimeIndex')
+        .where('PublishedDateTime').gt(oneMinAgo)
+        .exec((err, data) => {
+          expect(err).to.not.exist;
+          expect(data.Items).to.have.length.above(0);
 
-        const oneMinAgoFormatted = oneMinAgo.toISOString();
-        _.each(data.Items, t => {
-          const published = t.get('PublishedDateTime');
+          const oneMinAgoFormatted = oneMinAgo.toISOString();
+          _.each(data.Items, (t) => {
+            const published = t.get('PublishedDateTime');
 
-          expect(published).to.be.at.least(oneMinAgoFormatted);
+            expect(published).to.be.at.least(oneMinAgoFormatted);
 
-          expect(t.toJSON()).to.have.keys(['UserId', 'TweetID', 'content', 'PublishedDateTime']);
-          expect(t.toJSON()).to.not.have.keys(['num', 'tag']);
+            expect(t.toJSON()).to.have.keys(['UserId', 'TweetID', 'content', 'PublishedDateTime']);
+            expect(t.toJSON()).to.not.have.keys(['num', 'tag']);
+          });
+
+          return done();
         });
-
-        return done();
-      });
     });
 
-    it('should return users that match expression filters', done => {
+    it('should return users that match expression filters', (done) => {
       User.scan()
         .filterExpression('#age BETWEEN :low AND :high AND begins_with(#email, :e)')
         .expressionAttributeValues({ ':low': 18, ':high': 22, ':e': 'test1' })
