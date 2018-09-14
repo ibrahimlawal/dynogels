@@ -2,8 +2,9 @@
 
 const sinon = require('sinon');
 const AWS = require('aws-sdk');
-const Table = require('../lib/table');
 const _ = require('lodash');
+
+const Table = require('../lib/table');
 
 exports.mockDynamoDB = () => {
   const opts = { endpoint: 'http://dynamodb-local:8000', apiVersion: '2012-08-10' };
@@ -44,7 +45,7 @@ exports.mockDocClient = () => {
     'query'
   ];
 
-  _.each(operations, op => {
+  _.each(operations, (op) => {
     client[op] = sinon.stub();
   });
 

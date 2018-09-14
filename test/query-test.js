@@ -1,14 +1,16 @@
 'use strict';
 
+const chai = require('chai');
+const assert = require('assert');
+const Joi = require('joi');
+
 const helper = require('./test-helper');
 const Schema = require('../lib/schema');
 const Query = require('../lib//query');
 const Serializer = require('../lib/serializer');
 const Table = require('../lib/table');
-const chai = require('chai');
+
 const expect = chai.expect;
-const assert = require('assert');
-const Joi = require('joi');
 
 chai.should();
 
@@ -25,7 +27,7 @@ describe('Query', () => {
   });
 
   describe('#exec', () => {
-    it('should run query against table', done => {
+    it('should run query against table', (done) => {
       const config = {
         hashKey: 'name',
         rangeKey: 'email',
@@ -46,7 +48,7 @@ describe('Query', () => {
       });
     });
 
-    it('should return error', done => {
+    it('should return error', (done) => {
       const config = {
         hashKey: 'name',
         rangeKey: 'email',
@@ -68,7 +70,7 @@ describe('Query', () => {
       });
     });
 
-    it('should stream error', done => {
+    it('should stream error', (done) => {
       const config = {
         hashKey: 'name',
         rangeKey: 'email',
@@ -86,7 +88,7 @@ describe('Query', () => {
 
       const stream = new Query('tim', t, Serializer).exec();
 
-      stream.on('error', err => {
+      stream.on('error', (err) => {
         expect(err).to.exist;
         return done();
       });
@@ -96,7 +98,7 @@ describe('Query', () => {
       });
     });
 
-    it('should stream data after handling retryable error', done => {
+    it('should stream data after handling retryable error', (done) => {
       const config = {
         hashKey: 'name',
         rangeKey: 'email',

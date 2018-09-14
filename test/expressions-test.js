@@ -1,10 +1,12 @@
 'use strict';
 
-const expressions = require('../lib/expressions');
 const chai = require('chai');
-const expect = chai.expect;
-const Schema = require('../lib/schema');
 const Joi = require('joi');
+
+const expressions = require('../lib/expressions');
+const Schema = require('../lib/schema');
+
+const expect = chai.expect;
 
 chai.should();
 

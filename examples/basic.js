@@ -1,11 +1,12 @@
 'use strict';
 
-const dynogels = require('../index');
 const _ = require('lodash');
 const util = require('util');
-const AWS = dynogels.AWS;
 const Joi = require('joi');
 
+const dynogels = require('../index');
+
+const AWS = dynogels.AWS;
 AWS.config.loadFromPath(`${process.env.HOME}/.ec2/credentials.json`);
 
 const Account = dynogels.define('Foobar', {
@@ -45,7 +46,7 @@ const printScanResults = (err, data) => {
   }
 };
 
-dynogels.createTables(err => {
+dynogels.createTables((err) => {
   if (err) {
     console.log('failed to create table', err);
   }
@@ -56,7 +57,10 @@ dynogels.createTables(err => {
 
   // Create an account
   const params = {
-    email: 'test11@example.com', name: 'test 11', age: 21, scores: [22, 55, 44],
+    email: 'test11@example.com',
+    name: 'test 11',
+    age: 21,
+    scores: [22, 55, 44],
     list: ['a', 'b', 'c', 1, 2, 3],
     settings: { nickname: 'tester' }
   };
@@ -64,7 +68,7 @@ dynogels.createTables(err => {
   Account.create(params, (err, acc) => {
     printAccountInfo(err, acc);
 
-    acc.set({ name: 'Test 11', age: 25 }).update(err => {
+    acc.set({ name: 'Test 11', age: 25 }).update((err) => {
       console.log('account updated', err, acc.get());
     });
   });

@@ -1,10 +1,11 @@
 'use strict';
 
-const dynogels = require('../index');
-const AWS = dynogels.AWS;
 const Joi = require('joi');
 const async = require('async');
 
+const dynogels = require('../index');
+
+const AWS = dynogels.AWS;
 AWS.config.loadFromPath(`${process.env.HOME}/.ec2/credentials.json`);
 
 const Account = dynogels.define('example-Account', {
@@ -20,7 +21,7 @@ const Account = dynogels.define('example-Account', {
 
 dynogels.createTables({
   'example-Account': { readCapacity: 1, writeCapacity: 10 },
-}, err => {
+}, (err) => {
   if (err) {
     console.log('Error creating tables', err);
     process.exit(1);
