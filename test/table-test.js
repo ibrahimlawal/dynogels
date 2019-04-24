@@ -1,7 +1,7 @@
 'use strict';
 
 const _ = require('lodash');
-const Joi = require('joi');
+const Joi = require('@hapi/joi');
 const chai = require('chai');
 const sinon = require('sinon');
 
@@ -557,7 +557,7 @@ describe('table', () => {
       const config = {
         hashKey: 'email',
         schema: {
-          email: Joi.string().email({ errorLevel: true }).required(),
+          email: Joi.string().email().required(),
           custom: Joi.any().forbidden().error(new Error('Only hashed passwords should be persisted')),
         }
       };

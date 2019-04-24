@@ -2,7 +2,7 @@
 
 const chai = require('chai');
 const assert = require('assert');
-const Joi = require('joi');
+const Joi = require('@hapi/joi');
 
 const helper = require('./test-helper');
 const Schema = require('../lib/schema');

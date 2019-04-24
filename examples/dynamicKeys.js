@@ -1,6 +1,6 @@
 'use strict';
 
-const Joi = require('joi');
+const Joi = require('@hapi/joi');
 const async = require('async');
 const util = require('util');
 const _ = require('lodash');

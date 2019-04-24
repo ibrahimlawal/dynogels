@@ -4,7 +4,7 @@ const chai = require('chai');
 const async = require('async');
 const _ = require('lodash');
 const uuid = require('uuid');
-const Joi = require('joi');
+const Joi = require('@hapi/joi');
 
 const helper = require('../test-helper');
 const dynogels = require('../../index');

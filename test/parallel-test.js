@@ -2,7 +2,7 @@
 
 const chai = require('chai');
 const assert = require('assert');
-const Joi = require('joi');
+const Joi = require('@hapi/joi');
 
 const Table = require('../lib/table');
 const ParallelScan = require('../lib/parallelScan');

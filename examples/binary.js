@@ -1,7 +1,7 @@
 'use strict';
 
 const fs = require('fs');
-const Joi = require('joi');
+const Joi = require('@hapi/joi');
 
 const dynogels = require('../index');
 

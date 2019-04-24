@@ -2,7 +2,7 @@
 
 const AWS = require('aws-sdk');
 const chai = require('chai');
-const Joi = require('joi');
+const Joi = require('@hapi/joi');
 const sinon = require('sinon');
 
 const dynogels = require('../index');

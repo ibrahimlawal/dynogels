@@ -2,7 +2,7 @@
 
 const _ = require('lodash');
 const chai = require('chai');
-const Joi = require('joi');
+const Joi = require('@hapi/joi');
 
 const helper = require('./test-helper');
 const Schema = require('../lib/schema');

@@ -2,7 +2,7 @@
 
 const _ = require('lodash');
 const util = require('util');
-const Joi = require('joi');
+const Joi = require('@hapi/joi');
 
 const dynogels = require('../index');
 

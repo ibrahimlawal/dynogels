@@ -1,7 +1,7 @@
 'use strict';
 
 const chai = require('chai');
-const Joi = require('joi');
+const Joi = require('@hapi/joi');
 
 const serializer = require('../lib/serializer');
 const Schema = require('../lib/schema');
